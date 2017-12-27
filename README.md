@@ -11,18 +11,33 @@ Konfigurace: [Customer.cfg](/configs/Customer.cfg)
  - Vlastní BGP AS 2000.
  - 2x BGP peer s AS 3000.
  - Hlavní a záložní linka pomocí `local-preference ` a `route-map`.
- - Zákazník má 5x /C IPv4 které jsou v BGP sumarizovány: `aggregate-address 192.168.0.0 255.255.192.0`
- - ISP AS 3000 posílá zákazníkovy výchozí bránu ze směrovačů ISP1 a ISP2 (hlavní a záložní linka)
+ - Zákazník má 5x /C IPv4 které jsou v BGP sumarizovány: `aggregate-address 192.168.0.0 255.255.192.0`.
+ - ISP AS 3000 posílá zákazníkovy výchozí bránu ze směrovačů ISP1 a ISP2 (hlavní a záložní linka).
  
  ### ISP1 a ISP2 (AS 3000)
  Konfigurace: [ISP1.cfg](/configs/ISP1.cfg) a [ISP2.cfg](/configs/ISP2.cfg) 
   - Síť poskytovatele s redundantními směrovači (stejná konfigurace).
   - Poskytuje konektivitu zákazníka a peeruje s AS 4000 přes dvě linky.
-  - Mezi ISP1 a ISP2 je promozováno iBGP.
+  - Mezi ISP1 a ISP2 je provozováno iBGP.
   - Od zázazníka přímá jen sumarizovanou cestu (`prefix-list Summary in`).
   - Zákazník dostává jen prefixy, které patří AS 3000 (`filter-list 1 out`).
   - Poskytovatel AS 3000 posílá směrem ven k AS 4000 jen své prefixy (`distribute-list YesRoute out`).
  
  ### ISP3 a ISP3 (AS 4000)
  Konfigurace: [ISP3.cfg](/configs/ISP3.cfg) a [ISP4.cfg](/configs/ISP4.cfg) 
-  - TO DO.
+  - Síť dalšího poskytovatele. Peeruje s AS 3000 přes svě sériové linky.
+  - BGP sousedství s AS 3000 je navázáno nepřímo, přes Loopback0 s pomocí `update-source` a `ebgp-multihop`.
+  - Uvnitř sítě, mezi ISP3 a ISP4 je navázáno iBGP.
+  
+  ## TO DO
+  - BGP autentizace
+  - Zefektivnit směrování mezi AS 3000 a AS 4000. Lepší sumarizace? 
+  
+  ## Poznámky
+  - Konfigurace je zaměřena pouze na BGP, tzn. chybí ostatní nastavení.
+  - IPv4 adresy jsou voleny čistě náhodně.
+  
+  ## Zdroje
+  - [AMS-IX Port Configuration Hints](https://ams-ix.net/technical/specifications-descriptions/config-guide#5)
+  - bude doplněno
+ 
