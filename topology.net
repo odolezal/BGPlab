@@ -1,0 +1,172 @@
+autostart = False
+version = 0.8.7
+[127.0.0.1:7200]
+    workingdir = C:\Users\odole\AppData\Local\Temp
+    udp = 10001
+    [[3745]]
+        image = C:\etc\GNS3\Images\c3745-advipservicesk9-mz.124-25d.image
+        idlepc = 0x60a80f7c
+        sparsemem = True
+        ghostios = True
+    [[ROUTER Customer]]
+        model = 3745
+        console = 2101
+        aux = 2501
+        cnfg = configs\Customer.cfg
+        f0/0 = ISP1 f0/0
+        f0/1 = ISP2 f0/0
+        x = -164.0
+        y = -143.0
+        z = 1.0
+    [[ROUTER ISP1]]
+        model = 3745
+        console = 2102
+        aux = 2502
+        cnfg = configs\ISP1.cfg
+        f0/0 = Customer f0/0
+        f0/1 = ISP2 f0/1
+        slot1 = NM-4T
+        s1/0 = ISP3 s1/0
+        x = 42.0
+        y = -142.0
+        z = 1.0
+    [[ROUTER ISP2]]
+        model = 3745
+        console = 2106
+        aux = 2506
+        cnfg = configs\ISP2.cfg
+        f0/0 = Customer f0/1
+        f0/1 = ISP1 f0/1
+        slot1 = NM-4T
+        s1/0 = ISP4 s1/0
+        x = -59.0
+        y = 6.0
+        z = 1.0
+[127.0.0.1:7201]
+    workingdir = C:\Users\odole\AppData\Local\Temp
+    udp = 10101
+    [[3745]]
+        image = C:\etc\GNS3\Images\c3745-advipservicesk9-mz.124-25d.image
+        idlepc = 0x60a80f7c
+        sparsemem = True
+        ghostios = True
+    [[ROUTER ISP4]]
+        model = 3745
+        console = 2107
+        aux = 2507
+        cnfg = configs\ISP4.cfg
+        f0/0 = ISP3 f0/0
+        slot1 = NM-4T
+        s1/0 = ISP2 s1/0
+        x = 145.0
+        y = 15.0
+        z = 1.0
+    [[ROUTER ISP3]]
+        model = 3745
+        console = 2105
+        aux = 2505
+        cnfg = configs\ISP3.cfg
+        f0/0 = ISP4 f0/0
+        slot1 = NM-4T
+        s1/0 = ISP1 s1/0
+        x = 226.0
+        y = -133.0
+        z = 1.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = "Changelog: 25.7. - optimalizace routování: cílem je maximálně sumarizovat"
+        x = -249.0
+        y = 169.0
+    [[NOTE 2]]
+        text = "Lo0 = 100.5.5.2/24"
+        x = 214.0
+        y = 35.0
+    [[NOTE 3]]
+        text = "AS 2000"
+        x = -162.0
+        y = -99.0
+    [[NOTE 4]]
+        text = "217.31.61.8/30"
+        x = 26.0
+        y = 67.0
+    [[NOTE 5]]
+        text = "10.0.0.0/30"
+        x = -61.0
+        y = -155.0
+    [[NOTE 6]]
+        text = "10.0.1.0/30"
+        x = 32.0
+        y = -49.0
+    [[NOTE 7]]
+        text = "Lo0 = 100.5.5.1/24"
+        x = 294.0
+        y = -110.0
+    [[NOTE 8]]
+        text = "AS 3000"
+        x = 64.0
+        y = -101.0
+    [[NOTE 9]]
+        text = "eBGP"
+        x = -152.0
+        y = -67.0
+    [[NOTE 10]]
+        text = "Backup link"
+        x = -167.0
+        y = -26.0
+    [[NOTE 11]]
+        text = "Primary link"
+        x = -59.0
+        y = -175.0
+    [[NOTE 12]]
+        text = "217.31.61.0/30"
+        x = 222.0
+        y = -38.0
+    [[NOTE 13]]
+        text = "217.31.61.4/30"
+        x = 120.0
+        y = -166.0
+    [[NOTE 14]]
+        text = "10.0.2.0/30"
+        x = -170.0
+        y = -47.0
+    [[NOTE 15]]
+        text = "eBGP"
+        x = -37.0
+        y = -195.0
+    [[NOTE 16]]
+        text = "eBGP"
+        x = 58.0
+        y = 45.0
+    [[NOTE 17]]
+        text = "AS 4000"
+        x = 294.0
+        y = -127.0
+    [[NOTE 18]]
+        text = "iBGP"
+        x = 56.0
+        y = -66.0
+    [[NOTE 19]]
+        text = "iBGP"
+        x = 252.0
+        y = -58.0
+    [[NOTE 20]]
+        text = "AS 3000"
+        x = -56.0
+        y = 48.0
+    [[NOTE 21]]
+        text = "eBGP"
+        x = 154.0
+        y = -183.0
+    [[NOTE 22]]
+        text = "Lo1,2"
+        x = 6.0
+        y = -114.0
+    [[NOTE 23]]
+        text = "AS 4000"
+        x = 216.0
+        y = 13.0
+    [[NOTE 24]]
+        text = "Lo10,20,\n30,40,50"
+        x = -230.0
+        y = -139.0
