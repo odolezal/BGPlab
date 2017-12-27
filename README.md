@@ -6,7 +6,7 @@
 
 ## Aktivní prvky
 ### Customer (AS 2000)
-Konfigurace: [Customer.cfg](Customer.cfg)
+Konfigurace: [Customer.cfg](/configs/Customer.cfg)
  - Koncový prvek zákazníka (CPE).
  - Vlastní BGP AS 2000.
  - 2x BGP peer s AS 3000.
@@ -15,7 +15,7 @@ Konfigurace: [Customer.cfg](Customer.cfg)
  - ISP AS 3000 posílá zákazníkovy výchozí bránu ze směrovačů ISP1 a ISP2 (hlavní a záložní linka)
  
  ### ISP1 a ISP2 (AS 3000)
- Konfigurace: [ISP1.cfg](ISP1.cfg) a [ISP2.cfg](ISP2.cfg) 
+ Konfigurace: [ISP1.cfg](/configs/ISP1.cfg) a [ISP2.cfg](/configs/ISP2.cfg) 
   - Síť poskytovatele s redundantními směrovači (stejná konfigurace).
   - Poskytuje konektivitu zákazníka a peeruje s AS 4000 přes dvě linky.
   - Mezi ISP1 a ISP2 je promozováno iBGP.
@@ -24,5 +24,5 @@ Konfigurace: [Customer.cfg](Customer.cfg)
   - Poskytovatel AS 3000 posílá směrem ven k AS 4000 jen své prefixy (`distribute-list YesRoute out`).
  
  ### ISP3 a ISP3 (AS 4000)
- Konfigurace: [ISP3.cfg](ISP3.cfg) a [ISP4.cfg](ISP4.cfg) 
+ Konfigurace: [ISP3.cfg](/configs/ISP3.cfg) a [ISP4.cfg](/configs/ISP4.cfg) 
   - TO DO.
